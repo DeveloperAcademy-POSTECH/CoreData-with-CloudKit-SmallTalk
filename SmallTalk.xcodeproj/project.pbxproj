@@ -16,6 +16,9 @@
 		E269FEA1288D363800AF17D3 /* Chat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E269FEA0288D363800AF17D3 /* Chat+Extensions.swift */; };
 		E269FEA3288D37AD00AF17D3 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E269FEA2288D37AD00AF17D3 /* NSManagedObjectContext+Extensions.swift */; };
 		E269FEA8288D3C3F00AF17D3 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E269FEA7288D3C3F00AF17D3 /* CloudKit.framework */; };
+		E269FEAB288D4B6A00AF17D3 /* Notice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E269FEAA288D4B6A00AF17D3 /* Notice+Extensions.swift */; };
+		E269FEAE288D4F6500AF17D3 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E269FEAD288D4F6500AF17D3 /* ChatList.swift */; };
+		E269FEB1288D4FCF00AF17D3 /* NoticeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E269FEB0288D4FCF00AF17D3 /* NoticeList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		E269FEA4288D3C2A00AF17D3 /* SmallTalk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmallTalk.entitlements; sourceTree = "<group>"; };
 		E269FEA5288D3C3000AF17D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E269FEA7288D3C3F00AF17D3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		E269FEAA288D4B6A00AF17D3 /* Notice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notice+Extensions.swift"; sourceTree = "<group>"; };
+		E269FEAD288D4F6500AF17D3 /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
+		E269FEB0288D4FCF00AF17D3 /* NoticeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,7 @@
 		E269FE9D288D35E300AF17D3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E269FEA9288D4B5D00AF17D3 /* Notice */,
 				E269FE9E288D35F200AF17D3 /* Chat */,
 				E269FE93288D32AF00AF17D3 /* Persistence.swift */,
 				E269FEA2288D37AD00AF17D3 /* NSManagedObjectContext+Extensions.swift */,
@@ -106,6 +113,8 @@
 		E269FE9F288D35FC00AF17D3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E269FEAF288D4FC400AF17D3 /* Notice */,
+				E269FEAC288D4F5A00AF17D3 /* Chat */,
 				E269FE8C288D32AE00AF17D3 /* ContentView.swift */,
 			);
 			path = View;
@@ -117,6 +126,30 @@
 				E269FEA7288D3C3F00AF17D3 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E269FEA9288D4B5D00AF17D3 /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				E269FEAA288D4B6A00AF17D3 /* Notice+Extensions.swift */,
+			);
+			path = Notice;
+			sourceTree = "<group>";
+		};
+		E269FEAC288D4F5A00AF17D3 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				E269FEAD288D4F6500AF17D3 /* ChatList.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		E269FEAF288D4FC400AF17D3 /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				E269FEB0288D4FCF00AF17D3 /* NoticeList.swift */,
+			);
+			path = Notice;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,7 +225,10 @@
 				E269FEA1288D363800AF17D3 /* Chat+Extensions.swift in Sources */,
 				E269FE94288D32AF00AF17D3 /* Persistence.swift in Sources */,
 				E269FE8D288D32AE00AF17D3 /* ContentView.swift in Sources */,
+				E269FEAB288D4B6A00AF17D3 /* Notice+Extensions.swift in Sources */,
+				E269FEB1288D4FCF00AF17D3 /* NoticeList.swift in Sources */,
 				E269FE8B288D32AE00AF17D3 /* SmallTalkApp.swift in Sources */,
+				E269FEAE288D4F6500AF17D3 /* ChatList.swift in Sources */,
 				E269FE97288D32AF00AF17D3 /* SmallTalk.xcdatamodeld in Sources */,
 				E269FEA3288D37AD00AF17D3 /* NSManagedObjectContext+Extensions.swift in Sources */,
 			);
