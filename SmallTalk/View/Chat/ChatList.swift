@@ -56,8 +56,7 @@ struct ChatList: View {
 
 extension ChatList {
     private func addItem() {
-//        Notice.add(title: "첫 공지", content: "첫번째 공지", context: viewContext)
-//        Chat.add(content: message, context: viewContext)
+        Chat.add(content: message, context: viewContext)
         message = ""
     }
 
