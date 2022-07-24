@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 extension Chat {
-    static func addChat(content: String, context: NSManagedObjectContext) {
+    static func add(content: String, context: NSManagedObjectContext) {
         context.perform {
             let newChat = Chat(context: context)
             newChat.id = UUID()
