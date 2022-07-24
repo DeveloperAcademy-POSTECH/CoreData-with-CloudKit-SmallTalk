@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import CloudKit
 
 struct PersistenceController {
     static let shared = PersistenceController()
@@ -21,8 +22,6 @@ struct PersistenceController {
         do {
             try viewContext.save()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
@@ -33,24 +32,60 @@ struct PersistenceController {
 
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "SmallTalk")
+
+        // Container의 persistentStoreDscriptions를 통해서
+        // Public / Private Database에 사용될 Store를 세팅합니다
+        // SmallTalk.xcdatamodeld 파일에서 새로 작성한 Configuration을 사용해서
+        // 2개의 Store Dscription을 만들어서 Container에게 전달하여 Store를 생성합니다
+
+        // Default Description을 가져와서 새로운 description 작성에 사용합니다
+        // 각각 Configuration 세팅은 어떤 값들을 세팅하는지 조사 해보고 사용해주세요
+        guard let description = container.persistentStoreDescriptions.first else {
+            fatalError("Unresolved error with loading persistentStoreDescriptions")
+        }
+
+        // MARK: Public Database
+        let publicStoreUrl = description.url!
+            .deletingLastPathComponent()
+            .appendingPathComponent("SmallTalk-public.sqlite")
+        let identifier = description.cloudKitContainerOptions!.containerIdentifier
+
+        let publicDescription = NSPersistentStoreDescription(url: publicStoreUrl)
+        publicDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        publicDescription.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+
+        let publicOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: identifier)
+        publicOptions.databaseScope = .public
+        publicDescription.cloudKitContainerOptions = publicOptions
+        publicDescription.configuration = "Public"
+
+        // MARK: Private Database
+        let privateStoreUrl = description.url!
+            .deletingLastPathComponent()
+            .appendingPathComponent("SmallTalk-private.sqlite")
+        let privateIdentifier = description.cloudKitContainerOptions!.containerIdentifier
+
+        let privateDescription = NSPersistentStoreDescription(url: privateStoreUrl)
+        privateDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        privateDescription.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+
+        let privateOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: privateIdentifier)
+        privateOptions.databaseScope = .private
+        privateDescription.cloudKitContainerOptions = privateOptions
+        privateDescription.configuration = "Private"
+
+        container.persistentStoreDescriptions = [
+            publicDescription,
+            privateDescription
+        ]
+
+        // inMemory 관련 작업을 모든 Store에 대해서 할 수 있도록 수정합니다
         if inMemory {
-            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+            _ = container.persistentStoreDescriptions
+                .map { $0.url = URL(fileURLWithPath: "/dev/null") }
         }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
+            if let error = error as NSError? { fatalError("Unresolved error \(error), \(error.userInfo)") }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
