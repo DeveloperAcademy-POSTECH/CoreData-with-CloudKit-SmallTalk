@@ -13,6 +13,8 @@
 		E269FE92288D32AF00AF17D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E269FE91288D32AF00AF17D3 /* Preview Assets.xcassets */; };
 		E269FE94288D32AF00AF17D3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E269FE93288D32AF00AF17D3 /* Persistence.swift */; };
 		E269FE97288D32AF00AF17D3 /* SmallTalk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E269FE95288D32AF00AF17D3 /* SmallTalk.xcdatamodeld */; };
+		E269FEA1288D363800AF17D3 /* Chat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E269FEA0288D363800AF17D3 /* Chat+Extensions.swift */; };
+		E269FEA3288D37AD00AF17D3 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E269FEA2288D37AD00AF17D3 /* NSManagedObjectContext+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		E269FE91288D32AF00AF17D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E269FE93288D32AF00AF17D3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		E269FE96288D32AF00AF17D3 /* SmallTalk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmallTalk.xcdatamodel; sourceTree = "<group>"; };
+		E269FEA0288D363800AF17D3 /* Chat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chat+Extensions.swift"; sourceTree = "<group>"; };
+		E269FEA2288D37AD00AF17D3 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +59,10 @@
 		E269FE89288D32AE00AF17D3 /* SmallTalk */ = {
 			isa = PBXGroup;
 			children = (
+				E269FE9D288D35E300AF17D3 /* Model */,
+				E269FE9F288D35FC00AF17D3 /* View */,
 				E269FE8A288D32AE00AF17D3 /* SmallTalkApp.swift */,
-				E269FE8C288D32AE00AF17D3 /* ContentView.swift */,
 				E269FE8E288D32AF00AF17D3 /* Assets.xcassets */,
-				E269FE93288D32AF00AF17D3 /* Persistence.swift */,
 				E269FE95288D32AF00AF17D3 /* SmallTalk.xcdatamodeld */,
 				E269FE90288D32AF00AF17D3 /* Preview Content */,
 			);
@@ -71,6 +75,32 @@
 				E269FE91288D32AF00AF17D3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E269FE9D288D35E300AF17D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E269FE9E288D35F200AF17D3 /* Chat */,
+				E269FE93288D32AF00AF17D3 /* Persistence.swift */,
+				E269FEA2288D37AD00AF17D3 /* NSManagedObjectContext+Extensions.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E269FE9E288D35F200AF17D3 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				E269FEA0288D363800AF17D3 /* Chat+Extensions.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		E269FE9F288D35FC00AF17D3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E269FE8C288D32AE00AF17D3 /* ContentView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,10 +173,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E269FEA1288D363800AF17D3 /* Chat+Extensions.swift in Sources */,
 				E269FE94288D32AF00AF17D3 /* Persistence.swift in Sources */,
 				E269FE8D288D32AE00AF17D3 /* ContentView.swift in Sources */,
 				E269FE8B288D32AE00AF17D3 /* SmallTalkApp.swift in Sources */,
 				E269FE97288D32AF00AF17D3 /* SmallTalk.xcdatamodeld in Sources */,
+				E269FEA3288D37AD00AF17D3 /* NSManagedObjectContext+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +315,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,6 +345,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
